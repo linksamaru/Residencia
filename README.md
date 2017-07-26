@@ -169,3 +169,7 @@ Enjoy!
 [11]: http://symfony.com/doc/2.3/cookbook/logging/monolog.html
 [12]: http://symfony.com/doc/2.3/cookbook/assetic/asset_management.html
 [13]: http://symfony.com/doc/2.3/bundles/SensioGeneratorBundle/index.html
+
+
+It lacks the part of nb project.
+If you want to run it; first import the "residencia.sql" file to your MySQL database system, then download the project to "htdocs" and run it like other symfony project.
