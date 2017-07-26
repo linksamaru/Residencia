@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Registro de Usuario{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Formulario de Registro</h1>
+    
+        {% if unconfirmedPass is defined %}
+            <strong>{{unconfirmedPass}}<strong>
+        {% endif %}
+        <form action="{{url('_registro')}}" method="POST">
+            {{form_widget(formRegistro)}}
+            <input type="submit" value="Registro"/>
+        </form>
+            <hr>
+            <a href="{{path("gestion_resi_homepage")}}">Volver</a>
+    </div>
+{% endblock %}

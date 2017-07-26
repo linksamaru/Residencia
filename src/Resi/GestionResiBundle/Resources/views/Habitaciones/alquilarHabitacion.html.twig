@@ -1,0 +1,44 @@
+{% extends "::base.html.twig" %}
+{% block title %}Alquilar Habitacion {{habitacion[0].CodHabitacion}}{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+<div class="container">
+<h1>Habitacion {{habitacion[0].CodHabitacion}}</h1>
+<h2>Usuario {{usuario[0].nombre}}</h2>
+Alquiler de habitacion.
+A continuacion se procedera a realizar el contrato de alquiler de habitacion.<br>
+Se le mandara una copia del mismo a su correo y un mensaje de confirmacion.<br><br>
+<hr>
+<h4>Datos de la habitación:</h4>
+
+    {% if habitacion[0].path != null %}
+                <img src="{{ asset( '' ) ~ habitacion[0].path }}" alt="" height="250" width="300" /><br>
+            {% else %}
+                <img src="{{ asset('bundles/resi/imagesHabitaciones/default.jpg') }}" alt="" height="250" width="300" /><br>
+            {% endif %}
+            <br><br>
+            Descripción: {{habitacion[0].Descripcion}} <br>
+            <strong>Tarifa al Mes: </strong>{{habitacion[0].TarifaMes}} € <br>
+            Capacidad de personas: {{habitacion[0].TipoHabitacion}}<br>
+            {% if habitacion[0].TipoHabitacion != habitacion[0].numDisponibles %}
+                
+                {% set plazasRestantes = habitacion[0].TipoHabitacion - habitacion[0].numDisponibles %}
+                    <strong>Actualmente hay {{plazasRestantes}} persona[s] más viviendo en esta habitación.</strong>
+                
+            {% endif %}
+            <br>
+            <hr>
+            <h3>Contrato:</strong> </h3>
+            <strong>Fecha inicio:</strong> {{estanciaIni|date("d-m-Y")}}  <br>
+            <strong>Fecha fin:</strong> {{estanciaFin|date("d-m-Y")}} <br>
+            <strong>Estancia en meses:</strong> {{numMeses}} <br>
+            <strong>Total a pagar:</strong> ( {{habitacion[0].TarifaMes}} € x {{numMeses}} meses) <h2>{{totalPrice}} €</h2>
+             <br>
+<hr>
+<strong>¿Esta seguro de que quiere Alquilar esta habitacion?</strong><br><br>
+<a href="{{url('generar_factura',{'CodHabitacion':habitacion[0].CodHabitacion})}}" class="btn-form">Alquilar</a> 
+<a href="{{url('ver_habitaciones')}}" class="btn-form">Cancelar</a>
+</div>
+{% endblock %}

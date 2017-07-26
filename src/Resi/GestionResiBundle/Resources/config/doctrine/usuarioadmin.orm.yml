@@ -1,0 +1,18 @@
+Resi\GestionResiBundle\Entity\usuarioadmin:
+    type: entity
+    table: null
+    repositoryClass: Resi\GestionResiBundle\Entity\usuarioadminRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        idAdmin:
+            type: integer
+            column: IdAdmin
+        dNIUser:
+            type: string
+            length: '20'
+            column: DNIUser
+    lifecycleCallbacks: {  }

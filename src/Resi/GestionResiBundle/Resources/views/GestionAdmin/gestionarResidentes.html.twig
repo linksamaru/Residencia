@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Listado de Residentes{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+<h1>Gestion de Residentes </h1>
+<div class="container">
+{%for usu in usuarios %}
+    
+    {% if usu.nick != 'root' %}
+        
+        <h3>Nombre: {{usu.nombre}} {{usu.apellidos}}</h3>
+        <p><strong>Nick: </strong>{{usu.nick}}</p>
+        <p><strong>DNI: </strong>{{usu.dNI}}</p>
+        <p><strong>Teléfono: </strong>{{usu.telefono}}</p>
+        <p><strong>Email: </strong>{{usu.email}}</p>
+        <p><a href="{{url('admin_ver_un_perfil', {'dni':usu.dNI})}}">Ver perfil de {{usu.nombre}} {{usu.apellidos}}</a></p>
+        <a href="{{url('dar_baja_residente',{'DNI':usu.dNI})}}" class="btn-form">Dar de baja a {{usu.nombre}}</a><br>
+        <hr>
+    
+    {% endif %}
+{%endfor%}
+<hr>
+<br>
+    
+    <a href="{{url('_ver_panel_control')}}" class="btn-form">Volver a panel de control</a><br>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Residencia Universitaria{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+<h1>Bienvenid@s a la Residencia  Universitaria</h1>
+<ul>
+    {% if (fechaIni != null) and (fechaFin != null) %}
+        <h3>Estas son nuestras habitaciones disponibles:</h3>
+        {% for habitacion in habitaciones %}
+            {% if habitacion.numDisponibles == '0' %}
+            
+            {% else %}
+            <li>
+                <strong>Habitación numero: {{habitacion.CodHabitacion}}</strong><br>
+                    {% if habitacion.path != null %}
+                        <img src="{{ asset( '' ) ~ habitacion.path }}" alt="" height="250" width="300" /><br>
+                    {% else %}
+                        <img src="{{ asset('bundles/resi/imagesHabitaciones/default.jpg') }}" alt="" height="250" width="300" /><br>
+                    {% endif %}
+                Descripcion: {{habitacion.Descripcion}}<br>
+                Plazas: {{habitacion.TipoHabitacion}}<br>
+                Plazas disponibles: {{habitacion.numDisponibles}}
+                {% if habitacion.TipoHabitacion != habitacion.numDisponibles %}
+                    {% set plazasRestantes = habitacion.TipoHabitacion - habitacion.numDisponibles %}
+                        <strong>Actualmente hay {{plazasRestantes}} persona[s] más viviendo en esta habitación.<strong>
+                {% endif %}
+                <br>
+                Coste por Mes: {{habitacion.TarifaMes}} €<br><br>
+                <a href="{{url('alquilar_habitacion',{'CodHabitacion':habitacion.CodHabitacion})}}">Alquilar</a>
+            </li>
+            <hr>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        {%if (errorFecha==1)%}
+            <font color="red"><h3>Debe seleccionar una fecha de salida mas tarde que la fecha de entrada</h3> </font>
+            <form action="{{path("ver_habitaciones")}}" method="POST">
+                {{form_widget(formFechas)}}
+                <input type="submit" value="Mostrar"/>
+            </form>
+        {%elseif (errorFecha==2)%}
+            <font color="red"><h3>Por favor, elige una fecha a partir del día de hoy</h3> </font>
+            <form action="{{path("ver_habitaciones")}}" method="POST">
+                {{form_widget(formFechas)}}
+                <input type="submit" value="Mostrar"/>
+            </form>
+        {%else%}
+            <h3>Seleccione las fechas de Entrada y Salida</h3>
+            <form action="{{path("ver_habitaciones")}}" method="POST">
+                {{form_widget(formFechas)}}
+                <input type="submit" value="Mostrar"/>
+            </form>
+        {%endif%}
+    {% endif %}
+    
+</ul>
+    
+    {% if usu != null %}
+        <a href="{{url('ver_perfil')}}" class="btn-form">Volver a Perfil</a>   <br>        
+    {% else %}
+        <a href="{{url('gestion_resi_homepage')}}" class="btn-form">Volver</a>   <br>
+    {% endif %}
+    </div>
+{% endblock %}

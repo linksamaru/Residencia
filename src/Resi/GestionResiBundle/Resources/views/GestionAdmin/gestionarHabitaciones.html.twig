@@ -1,0 +1,43 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Listado de Habitaciones{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+<h1>Gestion de Habitaciones </h1>
+
+<a href="{{url('_nueva_habitacion')}}" class="btn-form">Añadir nueva habitacion</a><br>
+<hr><h2>Habitaciones Ocupadas:</h2>
+{%for hab in HabUsu %}
+    <strong>Numero: {{hab.CodHabitacion}}</strong><br>
+    {% if hab.path != null %}
+                <img src="{{ asset( '' ) ~ hab.path }}" alt="{{hab.CodHabitacion}} {{hab.Descripcion}}" height="250" width="300" /><br>
+            {% else %}
+                <img src="{{ asset('bundles/resi/imagesHabitaciones/default.jpg') }}" alt="{{hab.CodHabitacion}} {{hab.Descripcion}}" height="250" width="300" /><br>
+            {% endif %}
+    <p>Inquilino: <a href="{{url('admin_ver_un_perfil', {'dni':hab.dNI})}}">{{hab.nombre}} {{hab.apellidos}}</a></p>
+    <p>Tipo (Capacidad): {{hab.TipoHabitacion}}</p>
+    <p>Descripcion: {{hab.Descripcion}}</p>
+    <p>Tarifa (por mes): {{hab.TarifaMes}} €</p>
+    <hr>
+{%endfor%}
+<h2>Habitaciones sin ocupar:</h2>
+{%for hab in Habitaciones %}
+    <strong>Numero: {{hab.CodHabitacion}}</strong><br>
+    {% if hab.path != null %}
+                <img src="{{ asset( '' ) ~ hab.path }}" alt="{{hab.CodHabitacion}} {{hab.Descripcion}}" height="250" width="300" /><br>
+            {% else %}
+                <img src="{{ asset('bundles/resi/imagesHabitaciones/default.jpg') }}" alt="{{hab.CodHabitacion}} {{hab.Descripcion}}" height="250" width="300" /><br>
+            {% endif %}
+    <p>Tipo (Capacidad): {{hab.TipoHabitacion}}</p>
+    <p>Descripcion: {{hab.Descripcion}}</p>
+    <p>Tarifa (por mes): {{hab.TarifaMes}} €</p>
+    <a href="{{url('admin_modificar_habitacion',{'COD':hab.CodHabitacion})}}" class="btn-form">Modificar habitación {{hab.CodHabitacion}}</a><br>
+    <a href="{{url('dar_baja_habitacion',{'COD':hab.CodHabitacion})}}" class="btn-form">Dar de baja la habitacion {{hab.CodHabitacion}}</a><br>
+    <hr>
+{%endfor%}
+    <a href="{{url('_ver_panel_control')}}" class="btn-form">Volver a panel de control</a><br>
+    </div>
+{% endblock %}

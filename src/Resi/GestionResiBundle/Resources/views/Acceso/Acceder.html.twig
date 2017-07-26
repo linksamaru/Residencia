@@ -1,0 +1,25 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Log-in{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <span class="vacio"><br></span>
+        <h1>Formulario Log-in</h1>
+
+        {% if userNotFound != null %}
+            <strong>{{userNotFound}}</strong>
+        {% endif %} 
+
+        <form action="{{path("_acceder")}}" method="POST">
+            {{form_widget(formLogIn)}}
+        <input type="submit" value="Entrar"/>
+        </form>
+    
+        <hr>
+        <a href="{{path("gestion_resi_homepage")}}">Volver</a><hr>
+        <a href="{{url('_registro')}}" class="btn-form">Registrarse</a>
+    </div>
+{% endblock %}

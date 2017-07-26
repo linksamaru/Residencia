@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Actualización de Usuario{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+    <h1>Formulario de Actualización</h1>
+    <form action="{{url('actualizar_perfil')}}" method="POST">
+        {{form_widget(form)}}
+        <input type="submit" value="Actualizar"/>
+    </form>
+   {% if admin!=1 %}        
+                    <a href="{{url('ver_perfil')}}" class="btn-form">Volver a perfil</a><br>
+                {% else %}
+                    <a href="{{url('_ver_panel_control')}}" class="btn-form">Volver a panel de control</a><br>
+                {% endif %}
+    </div>
+{% endblock %}

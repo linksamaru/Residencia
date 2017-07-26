@@ -1,0 +1,26 @@
+Resi\GestionResiBundle\Entity\Factura:
+    type: entity
+    table: null
+    repositoryClass: Resi\GestionResiBundle\Entity\FacturaRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        codFactura:
+            type: integer
+            column: CodFactura
+        fechaExpedicion:
+            type: date
+            column: FechaExpedicion
+        fechaPago:
+            type: date
+            column: FechaPago
+        importe:
+            type: float
+            column: Importe
+        codContrato:
+            type: integer
+            column: CodContrato
+    lifecycleCallbacks: {  }

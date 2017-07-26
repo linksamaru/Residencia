@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Error Baja Usuario {% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+    <h4>Error Baja Usuario</h4>
+    <p>Ahora mismo no es posible borrar a este usuario porque existen facturas vinculadas a él sin pagar</p>
+    <a href="{{url('admin_ver_un_perfil', {'dni':dniUsuVerPerfil})}}" class="btn-form">Ver información de usuario</a><br>
+    <br><br>
+    <a href="{{url('gestionar_residentes')}}" class="btn-form">Ver residentes</a><br>
+    <a href="{{url('_ver_panel_control')}}" class="btn-form">Volver a panel de control</a><br>
+    </div>
+{% endblock %}

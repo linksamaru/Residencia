@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Residencia Universitaria{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Bienvenid@ a la Residencia Universitaria</h1>
+
+        {% if userNotFound != null %}
+            <strong>{{userNotFound}}</strong><br><br>
+        {% endif %}
+        {% if sesionIniciado != null %}
+            <strong>{{sesionIniciado}}</strong><br><br>
+        {% endif %}
+
+        <img src="{{ asset('bundles/resi/resiPortrait.jpg') }}" width="600" height="375"/>
+
+        <br>
+        <h3><a href="{{url('ver_habitaciones')}}" class="btn-form">Ver listado de habitaciones disponibles</a>  </h3>
+        <a href="{{url('_acceder')}}" class="btn-form">Hacer login</a>                           <br>
+        <a href="{{url('_registro')}}" class="btn-form">Registrarse</a>                          <br>
+
+    </div>
+{% endblock %}

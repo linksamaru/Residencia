@@ -1,0 +1,65 @@
+
+
+{% extends "::base.html.twig" %}
+
+{% block title %}Ver Información de {{datosUser[0].nombre}}{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+<h1>Información de {{datosUser[0].nombre}}</h1>
+
+<p><strong>Nombre:</strong> {{datosUser[0].nombre}} {{datosUser[0].apellidos}}</p>
+<p><strong>Nick:</strong> {{datosUser[0].nick}}</p>
+<p><strong>DNI:</strong> {{userDNI}}</p>
+<p><strong>Teléfono:</strong> {{datosUser[0].telefono}}</p>
+<p><strong>Email:</strong> {{datosUser[0].email}}</p><br>
+<p><strong>Contraseña:</strong> {{datosUser[0].contrasena}}</p><br>
+<p><strong>Fecha de registro:</strong> {{datosUser[0].fechaRegistro|date('Y-m-d')}}</p><hr>
+
+
+        
+    {% if listaContratosFacturas is defined %}
+        <hr>
+        <h2>Registro de facturas y contratos</h2>
+        
+      {% for contratoFacturas in listaContratosFacturas %}
+          <strong>Contrato: {{contratoFacturas[0].CodContrato}} </strong>
+          <p><strong>Con la habitación:</strong> {{contratoFacturas[0].CodHabitacion}}</p>
+          <p><strong>Fecha contrato:</strong> {{contratoFacturas[0].FechaContrato|date('Y-m-d')}}</p>
+          <p><strong>Fecha EXPIRACIÓN:</strong> {{contratoFacturas[0].fechaExpiracion|date('Y-m-d')}}
+          {% if fechaActual < contratoFacturas[0].fechaExpiracion %}
+              <font color="green"><strong>El contrato {{contratoFacturas[0].CodContrato}} de {{datosUser[0].nombre}} aún NO ha expirado </strong></font></p>
+          {% else %}
+          </p>
+          {% endif %}
+          <p><strong>Facturas asociadas:</strong></p><br>
+          <ul>
+            {% for factura in contratoFacturas[1] %}
+                   <p><strong>Factura código:</strong> {{factura.codFactura}} </p>
+                   <p><strong>Importe:</strong> {{factura.importe}}</p>
+                   <p><strong>Fecha emisión:</strong> {{factura.fechaExpedicion|date('Y-m-d')}}</p>
+                    
+                    {% if factura.fechaPago != null %}
+                        <p> <font color="green"><strong>Fecha de pago:</strong> {{factura.fechaPago|date('Y-m-d')}}</font></p>
+                         
+                    {% else %}
+                       <h3> <font color="red"><strong>Fecha de pago: Esta factura aún no ha sido pagada</strong></font></p>
+                    {% endif %}
+                    <br><br>
+            {% endfor %}
+          </ul>
+          <br>
+      {% endfor %}
+    {% else %}
+        <p>No se han encontrado contratos ni facturas para este usuario</p>
+    {% endif %}
+    
+    <hr>
+    <strong>Opciones:<strong><br>
+    <a href="{{url('gestionar_residentes')}}" class="btn-form">Ver residentes</a><br>
+    <a href="{{url('_ver_panel_control')}}" class="btn-form">Volver a panel de control</a><br>
+
+    </div>
+{% endblock %}

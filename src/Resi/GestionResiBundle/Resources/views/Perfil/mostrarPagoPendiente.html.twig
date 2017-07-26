@@ -1,0 +1,31 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Historial de Pagos pendientes de {{usu[0].nombre}}{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Historial de Pagos pendientes de {{usu[0].nombre}}</h1>
+    {% if pagos == null %}
+        <p>
+            <strong>Aun no ha alquilado ninguna habitacion y, por tanto aun no ha registrado ninguna factura.<br>
+                    Vuelva al perfil y seleccione alguna de la lista general de habitaciones.</strong>
+        </p>
+    {% endif %}
+    {%for p in pagos%}
+        <p>
+            Numero: {{p.codFactura}} asociada a la habitacion {{p.CodHabitacion}}<br>
+            Fecha de Expedicion: {{p.fechaExpedicion|date("d-m-Y")}}<br>
+            Importe: {{p.importe}} €<br>
+            Fecha expiración: {{p.fechaExpiracion|date("d-m-Y")}}<br>
+            {%if (p.fechaExpiracion < hoy)%}
+                <h2>¡PROXIMO A EXPIRACION! ¡PAGAR YA!</h2>
+            {%endif%}
+            <a href="{{url('pagar_factura',{'CodFactura':p.codFactura})}}" class="btn-form">Pagar Factura</a><br>
+        </p>
+    {%endfor%}
+    <a href="{{url('ver_perfil')}}" class="btn-form">Volver a perfil</a><br>
+    </div>
+{% endblock %}

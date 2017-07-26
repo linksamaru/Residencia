@@ -1,0 +1,7 @@
+parameters:
+#    gestion_resi.example.class: Resi\GestionResiBundle\Example
+
+services:
+#    gestion_resi.example:
+#        class: %gestion_resi.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

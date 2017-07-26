@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Añadir Habitacion{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+<h1>Formulario para añadir una nueva habitacion:</h1>
+
+<form action="{{path("_nueva_habitacion")}}" method="POST" {{ form_enctype(form) }}>
+    {{form_widget(form)}}
+    <input type="submit" value="Insertar"/>
+</form>
+    <br>
+    <a href="{{url('_ver_panel_control')}}" class="btn-form">Volver a panel de control</a><br>
+    </div>
+{% endblock %}

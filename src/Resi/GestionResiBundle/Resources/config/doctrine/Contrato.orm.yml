@@ -1,0 +1,27 @@
+Resi\GestionResiBundle\Entity\Contrato:
+    type: entity
+    table: null
+    repositoryClass: Resi\GestionResiBundle\Entity\ContratoRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        CodContrato:
+            type: integer
+            column: CodContrato
+        DNIResidente:
+            type: string
+            length: '20'
+            column: DNIResidente
+        CodHabitacion:
+            type: integer
+            column: CodHabitacion
+        FechaContrato:
+            type: date
+            column: FechaContrato
+        fechaExpiracion:
+            type: date
+            column: fechaExpiracion
+    lifecycleCallbacks: {  }

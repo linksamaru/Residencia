@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+{% block title %}Impreso de {{user[0].nombre}} por la Factura {{factura.codFactura+1}}{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+                <br>
+    <h1>Pago de Factura de la habitacion {{habitacion[0].CodHabitacion}}</h1>
+        <br><br>
+        <p>
+            Numero de Habitacion: {{habitacion[0].CodHabitacion}}<br>
+            Numero maximo de inquilinos en la habitacion: {{habitacion[0].TipoHabitacion}}<br>
+            Descripcion de la habitacion: {{habitacion[0].Descripcion}}<br>
+            Numero de Factura: {{factura.codFactura+1}}<br>
+            Fecha de Expedicion: {{factura.fechaExpedicion|date("d-m-Y")}}<br>
+            {% if factura.fechaPago == null %}
+                <strong>Factura no pagada</strong><br>
+            {%endif%}
+            Importe: {{factura.importe}} €<br>
+        </p>
+        <a href="{{url('ver_perfil')}}" class="btn-form">Volver a perfil</a><br>
+    </div>
+{% endblock %}

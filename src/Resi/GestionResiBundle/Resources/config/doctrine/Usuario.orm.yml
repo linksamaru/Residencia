@@ -1,0 +1,41 @@
+Resi\GestionResiBundle\Entity\Usuario:
+    type: entity
+    table: null
+    repositoryClass: Resi\GestionResiBundle\Entity\UsuarioRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        dNI:
+            type: string
+            length: '20'
+            column: DNI
+        nick:
+            type: string
+            length: '20'
+            column: Nick
+        contrasena:
+            type: string
+            length: '20'
+            column: Contrasena
+        nombre:
+            type: string
+            length: '40'
+            column: Nombre
+        apellidos:
+            type: string
+            length: '40'
+            column: Apellidos
+        email:
+            type: string
+            length: '40'
+            column: Email
+        telefono:
+            type: integer
+            column: Telefono
+        fechaRegistro:
+            type: date
+            column: fechaRegistro    
+    lifecycleCallbacks: {  }

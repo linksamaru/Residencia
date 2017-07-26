@@ -1,0 +1,43 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Historial de Facturas {% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+    <h1>Historial de Facturas</h1>
+    {% for contrato in contratos %}
+   
+        
+            <h2>Contrato: {{contrato[0].FechaContrato|date("d-m-Y")}} de {{contrato[0].DNIResidente}}</h2>
+            
+            <strong>Usuario: </strong><a href="{{url('admin_ver_un_perfil', {'dni':contrato[0].DNIResidente})}}">{{contrato[0].nick}}</a><br>
+            <strong>Número de habitación contratada: </strong>{{contrato[0].CodHabitacion}}<br>
+            <strong>Fecha de Contrato: </strong>{{contrato[0].FechaContrato|date("d-m-Y")}}<br>
+            <strong>Fecha de Expiración: </strong>{{contrato[0].fechaExpiracion|date("d-m-Y")}}<br>
+            {% if contrato[0].fechaExpiracion|date("d-m-Y") > hoy|date("d-m-Y") %}    
+                <h4><font color="green">Este contrato aún está vigente</font> </h4>
+            {% else %}
+                  <h4><font color="red">Este contrato ya ha expirado</font> </h4>
+            {% endif %}
+            <h3>Información de facturas del contrato</h3>
+            {%for f in contrato[1] %}
+                <p>
+                
+                    <strong>Código: </strong>{{f.codFactura}} <br>
+                    <strong>Fecha de Expedicion: </strong>{{f.fechaExpedicion|date("d-m-Y")}}<br>
+                    <strong>Importe: </strong>{{f.importe}} € <br>
+                    {% if f.fechaPago != null %}    
+                        <h4><font color="green">Pagada el día: {{f.fechaPago|date("d-m-Y")}}</font> </h4>
+                    {% else %}
+                          <h3><font color="red">Factura pendiente de pago</font> </h3>
+                    {% endif %}
+                    <hr>
+                </p>
+            {%endfor%}
+       
+    {%endfor%}
+    <a href="{{url('_ver_panel_control')}}" class="btn-form">Volver a panel de control</a><br>
+    </div>
+{% endblock %}

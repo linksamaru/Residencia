@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Baja Usuario {% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+    <h3>Confirmación de baja:</h3>
+    <p>¿Seguro que desea borrar al usuario con DNI {{dniUsuVerPerfil}} de la Residencia?</p>
+    <a href="{{url('admin_borrar_usuario_confirmed', {'dni':dniUsuVerPerfil})}}" class="btn-form">Borrar usuario</a><br>
+    <br><br>
+    <a href="{{url('_ver_panel_control')}}" class="btn-form">Volver a panel de control</a><br>
+    </div>
+{% endblock %}

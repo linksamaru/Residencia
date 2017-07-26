@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Historial de Habitaciones de {{usu[0].nombre}}{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Historial de habitaciones de {{usu[0].nombre}}</h1>
+    {% if habitaciones == null %}
+        <p>
+            <strong>Aun no ha alquilado ninguna habitacion.<br>
+                    Vuelva al perfil y seleccione alguna de la lista general de habitaciones.</strong>
+        </p>
+    {% endif %}
+    {%for hab in habitaciones%}
+        <p>
+            Numero: {{hab.CodHabitacion}}<br>
+            Descripcion: {{hab.Descripcion}}<br>
+            Plazas: {{hab.TipoHabitacion}}<br>
+            Coste por Mes: {{hab.TarifaMes}}<br><br>
+            {%if(hab.fechaExpiracion >= hoy )%}
+                <strong>Viviendo actualmente aqui.</strong>
+            {%endif%}
+        </p>
+    {%endfor%}
+    <a href="{{url('ver_perfil')}}" class="btn-form">Volver a perfil</a><br>
+    </div>
+{% endblock %}

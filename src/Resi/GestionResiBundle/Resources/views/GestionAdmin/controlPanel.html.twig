@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Panel de control Admin: {{user[0].nombre}}{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('stylesheets/indexMarcos.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <div class="container">
+<h1>Bienvenid@ Admin {{user[0].nombre}}</h1>
+
+<p>Nombre: {{user[0].nombre}} {{user[0].apellidos}}</p>
+<p>Nick: {{user[0].nick}}</p>
+<p>DNI: {{user[0].dNI}}</p>
+<p>Teléfono: {{user[0].telefono}}</p>
+<p>Email: {{user[0].email}}</p>
+
+<a href="{{url('gestionar_residentes')}}" class="btn-form">Ver opciones de residentes</a><br>
+<a href="{{url('gestionar_facturas')}}" class="btn-form">Ver opciones de facturas</a><br>
+<a href="{{url('actualizar_perfil')}}" class="btn-form">Actualizar perfil</a><br>
+<a href="{{url('cambiar_contrasena')}}" class="btn-form">Cambiar contraseña</a><br><br>
+<a href="{{url('_desconexion')}}" class="btn-form">Cerrar Sesion</a><br>
+<a href="{{url('gestionar_habitaciones')}}" class="btn-form">Ver opciones de habitaciones</a><br>
+    </div>
+{% endblock %}

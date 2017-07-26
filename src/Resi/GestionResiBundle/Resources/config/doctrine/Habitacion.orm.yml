@@ -1,0 +1,25 @@
+Resi\GestionResiBundle\Entity\Habitacion:
+    type: entity
+    table: null
+    repositoryClass: Resi\GestionResiBundle\Entity\HabitacionRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        CodHabitacion:
+            type: integer
+        Descripcion:
+            type: string
+            length: '40'
+        TipoHabitacion:
+            type: integer
+        TarifaMes:
+            type: float
+        path:
+            type: string
+            length: '255'
+        numDisponibles:
+            type: integer
+    lifecycleCallbacks: {  }

@@ -1,0 +1,113 @@
+gestion_resi_homepage:
+    pattern:  /
+    defaults: { _controller: GestionResiBundle:Default:index }
+
+ver_perfil:
+    pattern: /verPerfil
+    defaults: { _controller: GestionResiBundle:Perfil:verPerfil }
+
+ver_historial_habitaciones:
+    pattern: /verHistorialHabitaciones
+    defaults: { _controller: GestionResiBundle:Perfil:verHistorialHabitaciones }
+
+mostrar_pago_pendiente:
+    pattern: /mostrarPagoPendiente
+    defaults: { _controller: GestionResiBundle:Perfil:mostrarPagoPendiente }
+
+_acceder:
+    pattern: /Acceder
+    defaults: { _controller: GestionResiBundle:Acceso:Acceder }
+
+_registro:
+    pattern: /Registro
+    defaults: { _controller: GestionResiBundle:Acceso:Registro }
+    
+_desconexion:
+    pattern: /desconectar
+    defaults: { _controller: GestionResiBundle:Acceso:Desconexion }
+
+ver_habitaciones:
+    pattern: /verHabitaciones
+    defaults: { _controller: GestionResiBundle:Habitaciones:verHabitaciones }
+
+alquilar_habitacion:
+    pattern: /alquilarHabitacion/{CodHabitacion}
+    defaults: { _controller: GestionResiBundle:Habitaciones:alquilarHabitacion }
+
+gestionar_habitaciones:
+    pattern: /gestionarHabitaciones
+    defaults: { _controller: GestionResiBundle:GestionAdmin:gestionarHabitaciones }
+
+gestionar_facturas:
+    pattern: /gestionarFacturas
+    defaults: { _controller: GestionResiBundle:GestionAdmin:gestionarFacturas }
+
+gestionar_residentes:
+    pattern: /gestionarResidentes
+    defaults: { _controller: GestionResiBundle:GestionAdmin:gestionarResidentes }
+
+dar_baja_residente:
+    pattern: /darBajaResidente/{DNI}
+    defaults: { _controller: GestionResiBundle:GestionAdmin:darBajaResidente }
+
+ver_factura:
+    pattern: /verFactura
+    defaults: { _controller: GestionResiBundle:Facturas:verFactura }
+
+pagar_factura:
+    pattern: /pagarFactura/{CodFactura}
+    defaults: { _controller: GestionResiBundle:Facturas:pagarFactura }
+
+generar_factura:
+    pattern: /generarFactura/{CodHabitacion}
+    defaults: { _controller: GestionResiBundle:Facturas:generarFactura }
+
+enviar_notificacion_pago:
+    pattern: /enviarNotificacionPago
+    defaults: { _controller: GestionResiBundle:Facturas:enviarNotificacionPago }
+
+enviar_mensaje_factura:
+    pattern: /enviarMensajeFactura
+    defaults: { _controller: GestionResiBundle:Facturas:enviarMensajeFactura }
+    
+actualizar_perfil:
+    pattern: /actualizarPerfil
+    defaults: { _controller: GestionResiBundle:Perfil:actualizarPerfil }
+
+cambiar_contrasena:
+    pattern: /cambiarContrasena
+    defaults: { _controller: GestionResiBundle:Perfil:cambiarContrasena }
+
+_ver_panel_control:
+    pattern: /controlPanel
+    defaults: { _controller: GestionResiBundle:Perfil:verPanelDeControl }
+    
+_nueva_habitacion:
+    pattern: /addHabitacion
+    defaults: { _controller: GestionResiBundle:GestionAdmin:nuevaHabitacion }
+    
+dar_baja_habitacion:
+    pattern: /borrarHabitacion/{COD}
+    defaults: { _controller: GestionResiBundle:GestionAdmin:borrarHabitacion }
+ 
+admin_modificar_habitacion:
+    pattern: /modificarHabitacion/{COD}
+    defaults: { _controller: GestionResiBundle:GestionAdmin:modificarHabitacion }
+    
+    
+borrar_factura:
+    pattern: /borrarFactura/{cod}
+    defaults: { _controller: GestionResiBundle:GestionAdmin:borrarFactura }
+    
+admin_ver_un_perfil:
+    pattern: /admin_ver_un_perfil/{dni}
+    defaults: { _controller: GestionResiBundle:GestionAdmin:verPerfilUser }
+    
+admin_borrar_usuario_confirmed:
+    pattern: /admin_borrar_usuario_confirmed/{dni}
+    defaults: { _controller: GestionResiBundle:GestionAdmin:borrarUsuarioConfirmed }
+
+desahuciar:
+    pattern: /desahuciar/{dni}
+    defaults: { _controller: GestionResiBundle:GestionAdmin:desahuciar }
+    
