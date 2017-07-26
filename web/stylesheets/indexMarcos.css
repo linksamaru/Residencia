@@ -1,0 +1,70 @@
+h1 {
+    color: #006600;
+    text-align: center;
+}
+.container{
+    padding-bottom: 5%;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+a{
+    text-decoration: none;
+    text-align: center;
+    width: 94%;
+    background-color: #ffc44f;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    
+}
+a:hover{
+    background-color: #ffaa00;
+}
+body{
+    background-color: #3399ff;
+}
+.vacio{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+input[type=text], select, date, input[type=password], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=text]:read-only{
+    border: 2px solid #e6e6e6;
+    background-color: #b3b3b3;
+}
+input[type=text]:-moz-read-only{
+    border: 2px solid #e6e6e6;
+    background-color: #b3b3b3;
+}
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+img{
+    width: 100%;
+    height: auto;
+}
+ul{
+    list-style-type: none;
+}
